@@ -16,11 +16,14 @@ using namespace std;
 int solution(vector<vector<string>> clothes) {
     int answer = 1;
 
-    unordered_map <string, int> attributes;
+    unordered_map <string, int> hash;
     for (int i = 0; i < clothes.size(); i++)
-        attributes[clothes[i][1]]++;
-    for (auto it = attributes.begin(); it != attributes.end(); it++)
-        answer *= (it->second + 1);
+        hash[clothes[i][1]]++;
+
+    unordered_map<string, int>::iterator iter;
+    for (iter = hash.begin(); iter != hash.end(); iter++) {
+        answer *= (iter->second + 1);
+    }
 
     answer--;
 
